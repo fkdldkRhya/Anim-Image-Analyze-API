@@ -13,6 +13,9 @@ class DatabaseInfo:
     database = ""
 ```
 
+## Dependency
+
+
 ## License
 MIT License
 
