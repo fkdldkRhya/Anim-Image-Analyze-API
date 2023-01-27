@@ -14,11 +14,14 @@ class DatabaseInfo:
 ```
 
 ## Dependency
-> Python 3.9.0
+> Python 3.9.0 
 
-> Numpy 1.24.1
-> PyMySql 1.0.2
-> imutils 0.5.4
+> Numpy 1.24.1 
+> 
+> PyMySql 1.0.2 
+> 
+> imutils 0.5.4 
+> 
 > opencv-python 4.7.0.68
 
 ## License
