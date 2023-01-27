@@ -19,7 +19,7 @@ print("")
 # Root paths
 # ======================================
 result = [
-    ["C:\\Users\\ji055\\Desktop\\Dev Resources\\UtaitePlayer\\Windows\\UtaitePlayer\\UtaitePlayer\\bin\\x64\\Release\\resources\\images_pixivtop", 1]
+    ["C:\\Users\\ji055\\Desktop\\123", 1]
 ]
 # ======================================
 
@@ -75,7 +75,7 @@ for analyze_metadata in result:
             features = cd.describe(image)
             features = [str(f) for f in features]
 
-            sql = "INSERT INTO anim_image_analyze(analyze_value, analyze_path, analyze_target_type) VALUES ('%s', '%s', %d)" % (str(features).replace("'", "\""), str(image_path), analyze_type)
+            sql = "INSERT INTO anim_image_analyze(analyze_value, analyze_path, analyze_target_type) VALUES ('%s', '%s', %d)" % (str(features).replace("'", "\""), str(image_path).replace("\\", "\\\\"), analyze_type)
             cur.execute(sql)
         except Exception as e:
             print("[Error] %s" % e)
