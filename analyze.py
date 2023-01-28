@@ -31,6 +31,7 @@ conn = pymysql.connect(host=DatabaseInfo.host,
                        db=DatabaseInfo.database,
                        charset='utf8')
 
+database_data = []
 remover_result = []
 remover_cursor = conn.cursor()
 remover_cursor.execute("SELECT analyze_id, analyze_path FROM anim_image_analyze")
@@ -43,6 +44,8 @@ while True:
 
     if not os.path.exists(row[1]):
         remover_result.append([row[0], row[1]])
+    else:
+        database_data.append(row[1])
 
 remover_cursor.close()
 
@@ -68,9 +71,13 @@ for analyze_metadata in result:
     print("[Target Path] %s" % analyze_path)
 
     for image_path in glob.glob(analyze_path + "/*"):
-        print("[File Path] %s" % image_path)
-
         try:
+            if image_path in database_data:
+                print("[File Path] %s --> Skip!" % image_path)
+                continue
+            else:
+                print("[File Path] %s" % image_path)
+
             image = cv2.imread(image_path)
             features = cd.describe(image)
             features = [str(f) for f in features]
